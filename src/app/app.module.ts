@@ -20,6 +20,12 @@ import { AdminComponent } from './components/admin/admin/admin.component';
 import { AddProductComponent } from './components/admin/add-product/add-product.component';
 import { ProductsComponent } from './components/products/products.component';
 import { CartComponent } from './components/cart/cart.component';
+import { NotfoundComponent } from './components/notfound/notfound.component';
+import { ProductsModule } from './modules/products/products.module';
+import { AdminModule } from './modules/admin/admin.module';
+import { LoginModule } from './modules/login/login.module';
+import { SignupModule } from './modules/signup/signup.module';
+import { CartModule } from './modules/cart/cart.module';
 
 
 
@@ -37,7 +43,8 @@ import { CartComponent } from './components/cart/cart.component';
     AdminComponent,
     AddProductComponent,
     ProductsComponent,
-    CartComponent
+    CartComponent,
+    NotfoundComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +57,12 @@ import { CartComponent } from './components/cart/cart.component';
     MatMenuModule,
     MatButtonModule,
     MatFormFieldModule,
-    FormsModule
+    FormsModule,
+    ProductsModule,
+    AdminModule,
+    LoginModule,
+    SignupModule,
+    CartModule
   ],
   providers: [],
   bootstrap: [AppComponent]
