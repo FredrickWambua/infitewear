@@ -18,6 +18,6 @@
                 <small *ngIf="loginForm.get('password')!.errors!['minength']">* enter a valid password</small>
             </div>
         </div><br>
-        <button type="submit" [disabled]="!loginForm.valid">Login</button>
+        <button type="submit" [disabled]="!loginForm.valid" class="btn btn-primary" >Login</button>
     </form>  
 </div>

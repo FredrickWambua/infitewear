@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ProductsService } from 'src/app/services/products.service';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+
 
 
 @Component({
@@ -10,19 +12,42 @@ import { ProductsService } from 'src/app/services/products.service';
 })
 export class AddProductComponent implements OnInit {
 
-  // onSubmit(addProductForm:NgForm){
-  //   console.log(addProductForm);
-    
-    
-  // }
+productForm!: FormGroup;
+categories: string[]=['Men Clothing', 'Ladies Clothing', 'Baby Wear', 'Sneakers']
 
-  constructor(private productService:ProductsService) { }
+
+  constructor(public formBuilder:FormBuilder, private productService:ProductsService) { }
+    get pf(){
+      return this.productForm.controls;
+      
+    }
 
   ngOnInit(): void {
+    this.productForm = this.formBuilder.group({
+      name: ['',[Validators.required, Validators.minLength(3)]],
+      image: ['',[Validators.required]],
+      imgSrc: ['',],
+      description: ['',[Validators.required, Validators.minLength(20)]],
+      category: [''],
+      price: ['',[Validators.required, Validators.minLength(3)]],
+    })
+  }
+  imageFile!: string;
+
+  onImageChange(e:any){
+    const reader = new FileReader();
+    if(e.targe.files){
+      const image= e.target.files;
+      reader.readAsDataURL(image);
+
+      reader.onload =()=>{
+        this.imageFile = reader.result as string;
+      }
+    }
   }
 
-  addProduct(name: string, description:string, category:string, price:number){
-    this.productService.addProduct(name,description,category,price)
+  addProduct(){
+    this.productService.addProduct({...this.productForm.value, image: this.imageFile})
   }
 
 }

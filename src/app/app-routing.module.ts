@@ -10,6 +10,7 @@ import { NotfoundComponent } from './components/notfound/notfound.component';
 import { ProductsComponent } from './components/products/products.component';
 
 const routes: Routes = [
+  {path: '', redirectTo: 'home',pathMatch:'full'},
   {path: 'home', component: HomeComponent},
   {path: 'products', loadChildren: ()=>import('./modules/products/products.module')
 .then(mod=>mod.ProductsModule)},

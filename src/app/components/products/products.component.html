@@ -17,13 +17,11 @@
 <div class="container">
     <div class="row">
         <ng-container>
-            <h1>product 1</h1>
-
             <div class="card col-md-3" *ngFor="let product of products">
-                <h5>{{product.name}}</h5>
-                <p>{{product.description}}</p>
-                <p>{{product.category}}</p>
-                <p>{{product.price}}</p>
+                <img src="{{product.image}}">
+                <h4>{{product.name}}</h4>
+                <p id="description">{{product.description}}</p>
+                <p><strong>Ksh {{product.price}}</strong></p>
                 <button class="btn btn-primary">Add to Cart</button>
             </div>
         </ng-container>
