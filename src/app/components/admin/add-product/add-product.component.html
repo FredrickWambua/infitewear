@@ -1,1 +1,22 @@
-<p>add-product works!</p>
+<div class="container">
+    <div class="form">
+        <label for="name">product name</label>
+        <input type="text" #name class="inp"><br>
+        <!-- <label for="imageUrl">choose image</label> -->
+        <!-- <input type="file" name="imageUrl" id="imageUrl" #image class="inp">-->
+        <label for="description">description</label>
+        <textarea name="description" id="description" cols="30" rows="10" #description></textarea><br>
+        <label for="category">category</label>
+        <select name="category" id="category" #category>
+            <option value="men-wear">Men Clothing</option>
+            <option value="ladies">Ladies Clothing</option>
+            <option value="baby">Baby Wear</option>
+        </select><br>
+        <label for="price">Price</label>
+        <input type="number" #price class="inp"><br>
+        <button class="btn btn-primary"
+        (click)="addProduct( name.value, description.value, category.value, +price.value)">
+            Add Product
+        </button>
+    </div>
+</div>

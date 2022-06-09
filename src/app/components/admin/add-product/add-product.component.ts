@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { ProductsService } from 'src/app/services/products.service';
+
 
 @Component({
   selector: 'app-add-product',
@@ -7,9 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddProductComponent implements OnInit {
 
-  constructor() { }
+  // onSubmit(addProductForm:NgForm){
+  //   console.log(addProductForm);
+    
+    
+  // }
+
+  constructor(private productService:ProductsService) { }
 
   ngOnInit(): void {
+  }
+
+  addProduct(name: string, description:string, category:string, price:number){
+    this.productService.addProduct(name,description,category,price)
   }
 
 }

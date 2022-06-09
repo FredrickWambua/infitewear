@@ -1,0 +1,27 @@
+.card-top{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 30px;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: white;
+    border-bottom: 1px solid blue;
+}
+
+.item {
+    margin: 0 15px;
+    text-align: center;
+
+
+}
+a{
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.item h2{
+    font-size: 14px;
+    font-weight: 200;
+}

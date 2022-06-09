@@ -1,1 +1,31 @@
-<p>products works!</p>
+<div class="card-top container-fluid">
+    <div class="container d-flex">
+        <div class="item">
+            <a href="#"><h2>Ladies Clothing</h2></a>
+        </div>
+        <div class="item">
+            <a href="#"><h2>Men Clothing</h2></a>
+        </div>
+        <div class="item">
+            <a href="#"><h2>Baby Wear</h2></a>
+        </div>
+        <div class="item">
+            <a href="#"><h2>Sneakers</h2></a>   
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <ng-container>
+            <h1>product 1</h1>
+
+            <div class="card col-md-3" *ngFor="let product of products">
+                <h5>{{product.name}}</h5>
+                <p>{{product.description}}</p>
+                <p>{{product.category}}</p>
+                <p>{{product.price}}</p>
+                <button class="btn btn-primary">Add to Cart</button>
+            </div>
+        </ng-container>
+    </div>
+</div>

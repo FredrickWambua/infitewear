@@ -1,1 +1,39 @@
-<p>signup works!</p>
+
+<div class="signup-form">
+    <form (ngSubmit)="onSubmit()" [formGroup]="signUpForm">
+        <h2>Register</h2>
+        <div class="fistname">
+            <label for="firstname">First Name:</label><br>
+            <input type="text" name="firstname" id="firstname" class="form-control" formControlName="firstname">
+            <div class="text-danger" *ngIf="!signUpForm.get('firstname')!.valid && signUpForm.get('firstname')!.touched">
+                <small *ngIf="signUpForm.get('firstname')!.errors!['required']">* Firstname is required</small><br>
+                <small *ngIf="signUpForm.get('firstname')!.errors!['minlength']">* Minimum characters should be 3</small>
+            </div>
+        </div>
+        <div class="lastname">
+            <label for="lastname">Last name</label><br>
+            <input type="text" name="lastname" id="lastname" class="form-control" formControlName="lastname">
+            <div class="text-danger" *ngIf="!signUpForm.get('lastname')!.valid && signUpForm.get('lastname')!.touched">
+                <small *ngIf="signUpForm.get('lastname')!.errors!['required']">* Last name is required</small><br>
+                <small *ngIf="signUpForm.get('lastname')!.errors!['minlength']">* Minimum characters should be 3</small>
+            </div>
+        </div>
+        <div class="email">
+            <label for="email">Email</label><br>
+            <input type="text" name="email" id="email" class="form-control" formControlName="email">
+            <div class="text-danger" *ngIf="!signUpForm.get('email')!.valid && signUpForm.get('email')!.touched">
+                <small *ngIf="signUpForm.get('email')!.errors!['required']">* email is required</small><br>
+                <small *ngIf="signUpForm.get('email')!.errors!['email'] || signUpForm.get('email')!.errors!['pattern']">* enter a valid email</small>
+            </div>
+        </div>
+        <div class="password">
+            <label for="password">password</label><br>
+            <input type="text" name="password" id="password" class="form-control" formControlName="password">
+            <div class="text-danger" *ngIf="!signUpForm.get('password')!.valid && signUpForm.get('password')!.touched">
+                <small *ngIf="signUpForm.get('password')!.errors!['required']">* password is required</small><br>
+                <small *ngIf="signUpForm.get('password')!.errors!['minlength']">* enter a valid password</small>
+            </div>
+        </div><br>
+        <button type="submit" [disabled]="!signUpForm.valid">Register</button>
+    </form>  
+</div>

@@ -5,17 +5,21 @@
         Infinite Wear
     </button>
     <button mat-button routerLink="/home">Home</button>
-    <form action="">
-        <input type="text" name="search" id="search" placeholder="Search">
-        <mat-icon>search</mat-icon>
-    </form>
+    <div class="form-group">
+        <input type="text" name="search" id="search" class="form-control" placeholder="Search">
+    </div>
+    <mat-icon class="search-icon" >search</mat-icon>
+
     <!-- This fills the remaining space of the current row -->
     <span class="fill-remaining-space"></span>
     <div fxLayout="row" fxLayoutGap="20px" fxShow="false" fxShow.gt-sm>
         <button mat-button routerLink="/products">Products</button>
         <button mat-button routerLink="/signup">Sign Up</button>
         <button mat-button routerLink="/login">Login</button>
-        <button mat-mini-fab routerLink="/cart"><mat-icon>shopping_cart</mat-icon></button>
+        <button mat-button routerLink="/cart">
+            <mat-icon>shopping_cart</mat-icon>
+            <div class="badge">6</div>
+        </button>
     </div>
     <button mat-button [mat-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm>
      <mat-icon>menu</mat-icon>
