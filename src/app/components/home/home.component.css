@@ -1,0 +1,78 @@
+.container {
+    /* margin-top: 60px; */
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+    justify-content: center;
+    background-color: #7b68ee;
+
+
+}
+
+.intro {
+display: flex;
+flex-direction: column;
+gap: 2rem;
+justify-content: center;
+color: white;
+}
+
+.carosel {
+    text-align: center;
+    /* padding: 30px; */
+}
+
+
+h1 {
+    font-weight: bolder;
+    font-size: 50px;
+}
+h3 {
+    font-size: 25px;
+    font-weight: 300;
+    font-style: italic;
+}
+span {
+    color: blue;
+}
+
+.cta-btn {
+    background-color: blue;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    width: 30%;
+    font-size: large;
+    font-weight: bold;
+    padding: 10px;
+}
+
+ngb-carousel {
+    max-width: 700px;
+    margin: 50px auto;
+}
+ngb-carousel img {
+    width: 100%;
+    height: 100%;
+    outline: none;
+}
+/* ngb-carousel {
+    width: inherit;
+    height: inherit;
+} */
+.carousel-inner {
+    overflow: visible;
+}
+
+.carousel-caption{
+    color: white;
+}
+.carousel-caption h3 {
+    font-weight: 600;
+    color: blue;
+}
+.offer {
+    color: red;
+    font-weight: 600;
+}

@@ -39,7 +39,6 @@ categories: string[]=['Men Clothing', 'Ladies Clothing', 'Baby Wear', 'Sneakers'
     if(e.targe.files){
       const image= e.target.files;
       reader.readAsDataURL(image);
-
       reader.onload =()=>{
         this.imageFile = reader.result as string;
       }

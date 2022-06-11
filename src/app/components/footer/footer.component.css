@@ -1,0 +1,30 @@
+/* footer {
+    background-color: #1974d2;
+    color: white;
+} */
+
+.footer-intro {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+a, li{
+    text-decoration: none;
+    list-style-type: none;
+    color: white;
+
+}
+
+/* .contact-form {
+    background-color: blue;
+} */
+
+
+form {
+    width: 60%;
+}
+button {
+    color: black;
+    background-color: white;
+}

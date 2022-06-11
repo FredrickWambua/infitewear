@@ -7,7 +7,7 @@ import { Product } from '../models/product.model';
 })
 export class CartService {
 
-  public cartItemList:[]=[]
+  public cartItemList:any=[]
   public productList = new BehaviorSubject<any>([])
 
   constructor() { }
@@ -15,33 +15,36 @@ export class CartService {
     return this.productList.asObservable();
   }
 
-  setProduct(product: []){
-    this.cartItemList.push(...product);
+  setProduct(product: any){
+    this.cartItemList.push(product);  
     this.productList.next(product)
   }
 
-  addToCart(product:[]){
-    this.cartItemList.push(...product)
+  addToCart(product:any){
+    this.cartItemList.push(product)
     this.productList.next(this.cartItemList);
     this.getTotalPrice();
+    console.log(this.cartItemList); 
+    
   }
 
-  getTotalPrice(){
+  getTotalPrice(): number{
     let grandTotal =0;
-    this.cartItemList.map((a:any)=>{
-      grandTotal =+ a.total;
+    this.cartItemList.map((i:any)=>{
+      grandTotal =+ i.total; 
     })
-  }
+    return grandTotal;
+  } 
 
   removeCartItem(product:any){
-    this.cartItemList.map((a:any, index:any)=>{
-      if(product.id===a.id){
+    this.cartItemList.map((i:any, index:any)=>{
+      if(product.name===i.name){
         this.cartItemList.splice(index,1)
       }
     })
   }
 
-  emptyCard(){
+  emptyCart(){
     this.cartItemList = [];
     this.productList.next(this.cartItemList);
   }

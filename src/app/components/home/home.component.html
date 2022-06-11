@@ -1,10 +1,49 @@
 <div class="container">
     <div class="row">
-        <div class="col-md-6">
-            hello
+        <div class="col-md-6 intro">
+            <h1>Keep It <span>Real</span> With</h1>
+            <h1>Infinite Wear</h1>
+            <h3>Your Authentic Look Provider</h3>
+            <button class="cta-btn">Shop Now</button>
         </div>
-        <div class="col-md-6">
-            <img src="/frontend/src/assets/landingpage.jpg" alt="landingpage">
+        <div class="col-md-6 carosel">
+            <ngb-carousel>
+                <ng-template ngbSlide>
+                    <div class="img-one-wrapper">
+                        <img src="../../../assets/images/pexels-rachel-claire-5490969.jpg" alt="">
+                    </div>
+                    <div class="carousel-caption">
+                        <h3><span class="offer">30% Off!</span> Baby Clothing</h3>
+                    </div>
+                </ng-template>
+                <ng-template ngbSlide>
+                    <div class="img-one-wrapper">
+                        <img src="../../../assets/images/pexels-bess-hamiti-35188.jpg" alt="">
+                    </div>
+                    <div class="carousel-caption">
+                        <h3>Title Goes Here</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+                </ng-template>
+                <ng-template ngbSlide>
+                    <div class="img-one-wrapper">
+                        <img src="../../../assets/images/pexels-claudia-schmalz-6107680.jpg" alt="">
+                    </div>
+                    <div class="carousel-caption">
+                        <h3>Title Goes Here</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+                </ng-template>
+                <ng-template ngbSlide>
+                    <div class="img-one-wrapper">
+                        <img src="../../../assets/images/pexels-matthew-barra-812875.jpg" alt="">
+                    </div>
+                    <div class="carousel-caption">
+                        <h3>Title Goes Here</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+                </ng-template>
+            </ngb-carousel>
         </div>
     </div>
 </div>

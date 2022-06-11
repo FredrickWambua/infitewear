@@ -5,8 +5,8 @@
                 <div class="table table table-responsive">
                     <thead>
                         <tr>
-                            <th>Product name</th>
-                            <th>Product image</th>
+                            <th>Product Name</th>
+                            <th>Product Image</th>
                             <th>Product Description</th>
                             <th>Price</th>
                             <th>Quantity</th>
@@ -15,15 +15,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Polo Shirt</td>
-                            <td>Polo image here</td>
-                            <td>This is a polo shirt for those who know themselves</td>
-                            <td>Ksh. 1500</td>
-                            <td>2</td>
-                            <td>3000</td>
+                        <tr *ngFor="let product of products; let i = index">
+                            <td>{{product.name}}</td>
+                            <td>{{product.image}}</td>
+                            <td>{{product.description}}</td>
+                            <td>Ksh. {{product.price}}</td>
+                            <td>{{product.quantity}}</td>
+                            <td>{{product.total}}</td>
                             <td>
-                                <button class="btn btn-danger">delete</button>
+                                <button (click)="removeItem(product)" class="btn btn-danger">delete</button>
                             </td>
     
                         </tr>

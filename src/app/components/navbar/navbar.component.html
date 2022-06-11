@@ -18,7 +18,7 @@
         <button mat-button routerLink="/login">Login</button>
         <button mat-button routerLink="/cart">
             <mat-icon>shopping_cart</mat-icon>
-            <div class="badge">6</div>
+            <div class="badge">{{totalItems}}</div>
         </button>
     </div>
     <button mat-button [mat-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm>

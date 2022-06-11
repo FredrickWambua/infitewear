@@ -1,78 +1,42 @@
-<!-- Footer -->
-<footer class="page-footer font-small blue pt-4 bg-black text-white">
-    <div class="container-fluid text-center text-md-left">
-  
-      <!-- Grid row -->
-      <div class="row">
-  
-        <!-- Grid column -->
-        <div class="col-md-6 mt-md-0 mt-3">
-  
-          <!-- Content -->
-          <h5 class="text-uppercase flex-start">Infinite Wear</h5>
-          <p>Here you can use rows and columns here to organize your footer content.</p>
-  
+<footer class="bg-dark text-white mt-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h1>INFINITE WEAR</h1>
+        <div class="footer-intro">
+          <div class="left">
+            <h3>contact info</h3>
+            <ul>
+              <li>infinitewear@gmail.com</li>
+              <li>+254-712-345-678</li>
+              <li>Kimathi St. <br>Nyeri, Kenya</li>
+            </ul>
+          </div>
+          <div class="right">
+            <h3>Categories</h3>
+            <ul>
+              <li><a href="#">Men Clothing</a></li>
+              <li><a href="#">Ladies Clothing</a></li>
+              <li><a href="#">Babies Wear</a></li>
+              <li><a href="#">Sneakers</a></li>
+            </ul>
+          </div>
         </div>
-        <!-- Grid column -->
-  
-        <hr class="clearfix w-100 d-md-none pb-3">
-  
-        <!-- Grid column -->
-        <div class="col-md-3 mb-md-0 mb-3">
-  
-            <!-- Links -->
-            <h5 class="text-uppercase">products</h5>
-  
-            <ul class="list-unstyled">
-              <li>
-                <a href="#!">Ladies Wear</a>
-              </li>
-              <li>
-                <a href="#!">Mens Wear</a>
-              </li>
-              <li>
-                <a href="#!">Babies clothing</a>
-              </li>
-              <li>
-                <a href="#!">custom</a>
-              </li>
-            </ul>
-  
-          </div>
-          <!-- Grid column -->
-  
-          <!-- Grid column -->
-          <div class="col-md-3 mb-md-0 mb-3">
-  
-            <!-- Links -->
-            <h5 class="text-uppercase">contact</h5>
-  
-            <ul class="list-unstyled">
-              <li>
-                info@infinitewear.com
-              </li>
-              <li>
-                  K-Pop House, Kimathi St. <br> Nyeri
-              </li>
-              <li>
-                +254-712345678
-            </li>
-            </ul>
-  
-          </div>
-          <!-- Grid column -->
-  
       </div>
-      <!-- Grid row -->
-  
+      <div class="col-md-6 contact-form">
+        <h1>Contact Us Now</h1>
+          <form #contactForm="ngForm" novalidate>
+            <div class="form-group ">
+              <label>Enter Email</label>
+              <input type="text" class="form-control" name="email" ngModel>
+            </div>
+            <div class="form-group ">
+              <label>Enter Message</label><br>
+              <textarea name="yourmessage" id="yourmessage" cols="30" rows="2" ngModel></textarea>
+            </div>
+            <button type="submit" class="btn">Submit</button>
+          </form>
+      </div>
     </div>
-    <!-- Footer Links -->
-  
-    <!-- Copyright -->
-    <div class="footer-copyright text-center py-3">© 2020 Copyright:
-      <a href="https://fredrickwambua.com/"> fredrickwambua.com</a>
-    </div>
-    <!-- Copyright -->
-  
-  </footer>
-  <!-- Footer -->
+  </div>
+</footer>
