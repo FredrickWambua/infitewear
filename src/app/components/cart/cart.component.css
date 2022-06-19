@@ -28,3 +28,7 @@ h3, h4 {
     border-radius: .25rem;
 }
 
+.quantity button{
+    border: none;
+    background-color: gray;
+}

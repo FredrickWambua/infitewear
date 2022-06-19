@@ -11,19 +11,38 @@ import { ProductsService } from 'src/app/services/products.service';
 export class ProductsComponent implements OnInit {
   product: {name: string, image:string, description:string, category:string, price:number}[]=[]
   public productList: any[] =[]
+  public searchQuery : string = "";
+  public sortedCategory: any; 
+
 
   constructor(private productService:ProductsService, private cartService: CartService) { 
   }
 
   ngOnInit(): void {
     this.product = this.productService.getProducts()
-    this.productList.push(this.product)
+    this.productList.push(this.product);
+    this.sortedCategory = this.productList
+    this.product.forEach((prod:any)=>{
+      Object.assign(prod, {quantity:1, total: prod.price});
+    })
+    this.productService.search
+    .subscribe(val=>{
+      this.searchQuery = val;
+    })
     
-    this.productList.forEach((i:any)=>{
-      Object.assign(i, {quantiy:1, total:i.price});      
-    }); 
   }
   addToCart(prod: any){
-    this.cartService.addToCart(prod) 
+    if(this.cartService.cartItemList.length >=1){
+      alert('the item is already in cart, consider increasing the quantity')
+    }
+    this.cartService.addToCart(prod)
+
+  }
+  sortcategory(category:string){
+    this.sortedCategory = this.productList.filter((a:any)=>{
+      if(a.category==category || category==''){
+        return a;
+      }
+    })
   }
 }

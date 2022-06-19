@@ -6,7 +6,7 @@
     </button>
     <button mat-button routerLink="/home">Home</button>
     <div class="form-group">
-        <input type="text" name="search" id="search" class="form-control" placeholder="Search">
+        <input type="text" name="search" id="search" class="form-control" placeholder="Search" [(ngModel)]="searchQuery" (keyup)="search($event)">
     </div>
     <mat-icon class="search-icon" >search</mat-icon>
 
@@ -28,7 +28,7 @@
 </mat-toolbar>
 <mat-menu x-position="before" #menu="matMenu" class="toggle-buttons">
     <button mat-menu-item routerLink="/products">Products</button><hr>
-    <button mat-menu-item routerLink="/sign-up">Sign Up</button><hr>
+    <button mat-menu-item routerLink="/signup">Sign Up</button><hr>
     <button mat-menu-item routerLink="/login">Login</button><hr>
     <button mat-menu-item routerLink="/cart">Cart</button>
 </mat-menu>

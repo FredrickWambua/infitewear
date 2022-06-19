@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
   products: {name: string, image:string, description:string, category:string, price:number}[]=[]
+  public search = new BehaviorSubject<string>('')
 
 
   addProduct(data:any){

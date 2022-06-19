@@ -15,7 +15,7 @@
  }
 .form-control {
     border-radius: 3px;
-    width: 600px;
+    width: 500px;
     margin-left: 20px;
 }
 
@@ -28,7 +28,8 @@
 }
 
 .badge {
-    background-color: red;
+    background-color: orange;
     font-size: 3px;
     font-weight: 600;
+    align-content: center;    
 }

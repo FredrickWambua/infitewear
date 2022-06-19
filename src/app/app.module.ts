@@ -28,7 +28,7 @@ import { FormsModule } from '@angular/forms';
     NavbarComponent,
     HomeComponent,
     FooterComponent,
-    NotfoundComponent
+    NotfoundComponent,
   ],
   imports: [
     BrowserModule,

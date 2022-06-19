@@ -24,14 +24,30 @@ export class CartService {
     this.cartItemList.push(product)
     this.productList.next(this.cartItemList);
     this.getTotalPrice();
-    console.log(this.cartItemList); 
+    this.incQnty()
     
+  }
+  decQnty(product:any){
+    if(product.quantity > 1){
+      product.quantity--
+      product.total -= product.quantity * product.price
+
+    }
+  }
+
+  incQnty():number{
+    let quantity = 1
+    this.cartItemList.map((i:any)=>{
+      quantity++
+    })
+   return quantity;
   }
 
   getTotalPrice(): number{
     let grandTotal =0;
     this.cartItemList.map((i:any)=>{
-      grandTotal =+ i.total; 
+    grandTotal +=i.total 
+     
     })
     return grandTotal;
   } 
@@ -42,10 +58,13 @@ export class CartService {
         this.cartItemList.splice(index,1)
       }
     })
+    this.productList.next(this.cartItemList)
   }
 
   emptyCart(){
     this.cartItemList = [];
     this.productList.next(this.cartItemList);
   }
+
+
 }

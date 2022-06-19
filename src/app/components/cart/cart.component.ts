@@ -9,6 +9,7 @@ import { CartService } from 'src/app/services/cart.service';
 export class CartComponent implements OnInit {
   public products  : any = [];
   public grandTotal ! : number ;
+  public totalproducts! : number;
 
   constructor(private cartService: CartService) { }
 
@@ -25,5 +26,18 @@ export class CartComponent implements OnInit {
   emptyTheCart(){
     this.cartService.emptyCart();
   }
+  
+  decQnty(product:any){
+    if(product.quantity > 1){
+      product.quantity--
+      product.total -= product.quantity * product.price
 
+    }
+  }
+
+  incQnty(product:any){
+    product.quantity++
+    product.total += product.quantity * product.price
+  }
+  
 }

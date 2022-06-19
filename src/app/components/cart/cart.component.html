@@ -1,4 +1,4 @@
-<ng-container *ngIf="true">
+<ng-container *ngIf="products.length !=0">
     <div class="container">
         <div class="card-table">
             <div class="cart-product">
@@ -20,12 +20,17 @@
                             <td>{{product.image}}</td>
                             <td>{{product.description}}</td>
                             <td>Ksh. {{product.price}}</td>
-                            <td>{{product.quantity}}</td>
+                            <td class="quantity"><button (click)="decQnty(product)">-</button>{{product.quantity}}<button (click)="incQnty(product)">+</button></td>
                             <td>{{product.total}}</td>
                             <td>
                                 <button (click)="removeItem(product)" class="btn btn-danger">delete</button>
                             </td>
-    
+                        </tr>
+                        <tr>
+                            <td><button class="btn btn-danger" (click)="emptyTheCart()">Empty cart</button></td>
+                            <td><button class="btn btn-primary" routerLink="/products">Add more</button></td>
+                            <td><button class="btn btn-success">Checkout</button></td>
+                            <td>Grand Total: Ksh. {{grandTotal}}</td>
                         </tr>
                     </tbody>
                 </div>
@@ -34,7 +39,7 @@
     </div>
 </ng-container>
 
-<ng-container *ngIf="false">
+<ng-container *ngIf="products.length == 0">
     <div class="container">
         <div class="card">
             <h3 class="card-title">My Cart</h3>
@@ -42,8 +47,7 @@
         <div class="center">
             <img src="" alt="">
             <h3>Your cart is empty!</h3>
-            <h4>Add items</h4>
-            <button class="btn btn-primary">Shop Now</button>
+            <button class="btn btn-primary" routerLink="/products" >Shop Now</button>
         </div>
     </div>
 </ng-container>
