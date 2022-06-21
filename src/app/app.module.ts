@@ -15,6 +15,7 @@ import { MatButtonModule } from '@angular/material/button'
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -41,7 +42,8 @@ import { FormsModule } from '@angular/forms';
     MatMenuModule,
     MatButtonModule,
     MatFormFieldModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
 
   
   ],

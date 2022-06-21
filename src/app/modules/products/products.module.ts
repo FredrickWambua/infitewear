@@ -4,6 +4,7 @@ import { ProductsComponent } from 'src/app/components/products/products.componen
 import { ProductsRoutingModule } from './products-routing.module';
 import { FilterPipe } from 'src/app/pipes/filter.pipe';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -12,7 +13,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
   imports: [
     CommonModule,
     ProductsRoutingModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    HttpClientModule
     
   ]
 })

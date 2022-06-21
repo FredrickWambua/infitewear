@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Product } from 'src/app/models/product.model';
 import { CartService } from 'src/app/services/cart.service';
-// import { Product } from 'src/app/models/product.model';
 import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
@@ -9,8 +9,8 @@ import { ProductsService } from 'src/app/services/products.service';
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
-  product: {name: string, image:string, description:string, category:string, price:number}[]=[]
-  public productList: any[] =[]
+  // public product: {name: string, image:string, description:string, category:string, price:number}[]=[]
+  public productList: Product[] =[]
   public searchQuery : string = "";
   public sortedCategory: any; 
   p: number = 1;
@@ -20,10 +20,12 @@ export class ProductsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.product = this.productService.getProducts()
-    this.productList.push(this.product);
+    this.productService.getProducts().subscribe(data=>{
+      this.productList = data;
+      console.log(data);
+    })
     this.sortedCategory = this.productList
-    this.product.forEach((prod:any)=>{
+    this.productList.forEach((prod:any)=>{
       Object.assign(prod, {quantity:1, total: prod.price});
     })
     this.productService.search

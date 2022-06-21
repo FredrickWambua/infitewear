@@ -29,8 +29,7 @@ imageFile!: File
     this.productForm = this.formBuilder.group({
       name: ['',[Validators.required, Validators.minLength(3)]],
       image: ['',[Validators.required]],
-      imgSrc: ['',],
-      description: ['',[Validators.required, Validators.minLength(20)]],
+      description: ['',[Validators.required, Validators.minLength(4)]],
       category: [''],
       price: ['',[Validators.required, Validators.minLength(3)]],
     })
@@ -41,7 +40,11 @@ imageFile!: File
   }
 
   addProduct(){
-    this.productService.addProduct({...this.productForm.value, image:this.imageFile })
+    this.productService.addProduct(this.productForm.value).subscribe(()=>{
+      console.log('this is successfuly connected')
+    },(err)=>{
+      console.log(err);   
+    }) 
   }
 
 }

@@ -18,12 +18,12 @@
 
 <ng-container>
     <div class="container shop-products">  
-        <div class="card" *ngFor="let prod of product | paginate:{itemsPerPage:4, currentPage: p}">
-            <img src="{{prod.image}}">
-            <h4><strong>{{prod.name}}</strong></h4>
-            <p id="description">{{prod.description}}</p>
-            <p><strong>Ksh {{prod.price}}</strong></p>
-            <button class="btn btn-primary" (click)="addToCart(prod)">Add to Cart</button>
+        <div class="card" *ngFor="let product of productList | paginate:{itemsPerPage:4, currentPage: p};">
+            <img src="{{product.image}}">
+            <h4><strong>{{product.name}}</strong></h4>
+            <p id="description">{{product.description}}</p>
+            <p><strong>Ksh {{product.price}}</strong></p>
+            <button class="btn btn-primary" (click)="addToCart(product)">Add to Cart</button>
         </div>
     </div>
     <pagination-controls (pageChange)="p=$event"></pagination-controls>
