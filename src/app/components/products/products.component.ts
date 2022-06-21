@@ -13,6 +13,7 @@ export class ProductsComponent implements OnInit {
   public productList: any[] =[]
   public searchQuery : string = "";
   public sortedCategory: any; 
+  p: number = 1;
 
 
   constructor(private productService:ProductsService, private cartService: CartService) { 

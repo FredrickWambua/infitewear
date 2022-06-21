@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ProductsService } from 'src/app/services/products.service';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 
 
@@ -14,6 +15,8 @@ export class AddProductComponent implements OnInit {
 
 productForm!: FormGroup;
 categories: string[]=['Men Clothing', 'Ladies Clothing', 'Baby Wear', 'Sneakers']
+imageFile!: File
+
 
 
   constructor(public formBuilder:FormBuilder, private productService:ProductsService) { }
@@ -32,21 +35,13 @@ categories: string[]=['Men Clothing', 'Ladies Clothing', 'Baby Wear', 'Sneakers'
       price: ['',[Validators.required, Validators.minLength(3)]],
     })
   }
-  imageFile!: string;
 
-  onImageChange(e:any){
-    const reader = new FileReader();
-    if(e.targe.files){
-      const image= e.target.files;
-      reader.readAsDataURL(image);
-      reader.onload =()=>{
-        this.imageFile = reader.result as string;
-      }
-    }
+  onImageChange(event:any){
+    this.imageFile = event.target.files[0];
   }
 
   addProduct(){
-    this.productService.addProduct({...this.productForm.value, image: this.imageFile})
+    this.productService.addProduct({...this.productForm.value, image:this.imageFile })
   }
 
 }

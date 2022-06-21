@@ -17,18 +17,15 @@
 </div>
 
 <ng-container>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3" >
-                <div class="card d-flex" *ngFor="let prod of product | filter:searchQuery:'name'">
-                    <img src="{{prod.image}}">
-                    <h4>{{prod.name}}</h4>
-                    <p id="description">{{prod.description}}</p>
-                    <p><strong>Ksh {{prod.price}}</strong></p>
-                    <button class="btn btn-primary" (click)="addToCart(prod)">Add to Cart</button>
-                </div>
-            </div>
+    <div class="container shop-products">  
+        <div class="card" *ngFor="let prod of product | paginate:{itemsPerPage:4, currentPage: p}">
+            <img src="{{prod.image}}">
+            <h4><strong>{{prod.name}}</strong></h4>
+            <p id="description">{{prod.description}}</p>
+            <p><strong>Ksh {{prod.price}}</strong></p>
+            <button class="btn btn-primary" (click)="addToCart(prod)">Add to Cart</button>
         </div>
     </div>
+    <pagination-controls (pageChange)="p=$event"></pagination-controls>
 </ng-container>
 

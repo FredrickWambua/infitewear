@@ -7,7 +7,7 @@
                 <small *ngIf="pf['name'].errors?.['minlength']">* Minimum characters should be 3</small>
             </div><br>
             <label for="file">Product Image</label>
-            <input type="file" class="form-control" id="image" formControlName="image" (change)="onImageChange($event)">
+            <input type="file" accept="image/*" class="form-control" id="image" formControlName="image" (change)="onImageChange($event)">
             <div class="text-danger" *ngIf="pf['image'].touched && pf['image'].invalid">
                 <small *ngIf="pf['image'].errors">* File is required</small><br>
                 <small *ngIf="pf['image'].errors?.['minlength']">* Minimum characters should be 3</small>

@@ -18,6 +18,7 @@ export class CartComponent implements OnInit {
     .subscribe(res=>{
       this.products = res;
       this.grandTotal = this.cartService.getTotalPrice()
+
     })
   }
   removeItem(product:any){
@@ -30,14 +31,18 @@ export class CartComponent implements OnInit {
   decQnty(product:any){
     if(product.quantity > 1){
       product.quantity--
-      product.total -= product.quantity * product.price
+      product.total = product.quantity * product.price
+      this.grandTotal = this.cartService.getTotalPrice()
 
     }
   }
 
   incQnty(product:any){
     product.quantity++
-    product.total += product.quantity * product.price
+    product.total = product.quantity * product.price;
+    this.grandTotal = this.cartService.getTotalPrice()
+
   }
+  
   
 }

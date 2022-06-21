@@ -24,9 +24,17 @@ export class CartService {
     this.cartItemList.push(product)
     this.productList.next(this.cartItemList);
     this.getTotalPrice();
-    this.incQnty()
     
   }
+  getTotalPrice(): number{
+    let grandTotal =0;
+    this.cartItemList.map((i:any)=>{
+    grandTotal +=i.total 
+     
+    })
+    return grandTotal;
+  } 
+
   decQnty(product:any){
     if(product.quantity > 1){
       product.quantity--
@@ -43,14 +51,7 @@ export class CartService {
    return quantity;
   }
 
-  getTotalPrice(): number{
-    let grandTotal =0;
-    this.cartItemList.map((i:any)=>{
-    grandTotal +=i.total 
-     
-    })
-    return grandTotal;
-  } 
+
 
   removeCartItem(product:any){
     this.cartItemList.map((i:any, index:any)=>{
