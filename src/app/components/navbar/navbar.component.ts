@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
 import { ProductsService } from 'src/app/services/products.service';
+import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -12,7 +14,15 @@ export class NavbarComponent implements OnInit {
   public searchQuery : string = "";
 
   // search = ''
-  constructor( private cartService: CartService, private productService: ProductsService) { }
+  constructor( private cartService: CartService,
+    private productService: ProductsService,
+    public authService:AuthService,
+    public route:Router) { }
+
+    logout(){
+      this.authService.logoutUser();
+      this.route.navigate(['home'])
+    }
 
   ngOnInit(): void {
     this.cartService.getProducts().subscribe(res =>{

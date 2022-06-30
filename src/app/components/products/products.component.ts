@@ -23,11 +23,12 @@ export class ProductsComponent implements OnInit {
     this.productService.getProducts().subscribe(data=>{
       this.productList = data;
       console.log(data);
+      this.productList.forEach((prod:any)=>{
+        Object.assign(prod, {quantity:1, total: prod.price});
+      })
     })
     this.sortedCategory = this.productList
-    this.productList.forEach((prod:any)=>{
-      Object.assign(prod, {quantity:1, total: prod.price});
-    })
+
     this.productService.search
     .subscribe(val=>{
       this.searchQuery = val;
@@ -35,11 +36,9 @@ export class ProductsComponent implements OnInit {
     
   }
   addToCart(prod: any){
-    if(this.cartService.cartItemList.length >=1){
-      alert('the item is already in cart, consider increasing the quantity')
-    }
+    
     this.cartService.addToCart(prod)
-
+    
   }
   sortcategory(category:string){
     this.sortedCategory = this.productList.filter((a:any)=>{

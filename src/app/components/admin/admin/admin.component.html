@@ -1,1 +1,48 @@
-<p>admin works!</p>
+<!--  -->
+
+<ng-container *ngIf="productList.length !=0">
+    <div class="container">
+        <div class="card-table">
+            <div class="cart-product">
+                <div class="table table table-responsive">
+                    <thead>
+                        <tr>
+                            <th>ProductID</th>
+                            <th>Product Name</th>
+                            <th>Product Description</th>
+                            <th>Price</th>
+                            <th>edit</th>
+                            <th>delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let product of productList; let i = index">
+                            <td style="white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;" >{{product.id}}</td>
+                            <td>{{product.name}}</td>
+                            <td>{{product.description}}</td>
+                            <td>{{product.price}}</td>
+                            <td>
+                                <button (click)="editProduct()" >edit</button>
+                            </td>
+                            <td>
+                                <button (click)="deleteProduct()" class="btn btn-danger">delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>
+
+<ng-container *ngIf="productList.length == 0">
+    <div class="container">
+        <div class="center">
+            <img src="" alt="">
+            <h3>No products!</h3>
+            <button class="btn btn-primary" routerLink="/add-products" >Add Products</button>
+        </div>
+    </div>
+</ng-container>

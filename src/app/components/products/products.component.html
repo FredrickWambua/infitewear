@@ -15,17 +15,20 @@
         </div>
     </div>
 </div>
-
-<ng-container>
-    <div class="container shop-products">  
-        <div class="card" *ngFor="let product of productList | paginate:{itemsPerPage:4, currentPage: p};">
-            <img src="{{product.image}}">
-            <h4><strong>{{product.name}}</strong></h4>
-            <p id="description">{{product.description}}</p>
-            <p><strong>Ksh {{product.price}}</strong></p>
-            <button class="btn btn-primary" (click)="addToCart(product)">Add to Cart</button>
-        </div>
+<div class="container">
+    <div class="shop-container">
+        <ng-container *ngFor="let product of productList | paginate:{itemsPerPage:4, currentPage: p};">
+            <div class="card" >
+                <img src="{{product.image}}">
+                <h4><strong>{{product.name}}</strong></h4>
+                <p id="description">{{product.description}}</p>
+                <p><strong>Ksh {{product.price}}</strong></p>
+                <button class="btn btn-primary" (click)="addToCart(product)">Add to Cart</button>
+            </div>
+        </ng-container>
     </div>
     <pagination-controls (pageChange)="p=$event"></pagination-controls>
-</ng-container>
+</div>
+
+
 

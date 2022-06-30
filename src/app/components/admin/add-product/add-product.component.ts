@@ -15,11 +15,11 @@ export class AddProductComponent implements OnInit {
 
 productForm!: FormGroup;
 categories: string[]=['Men Clothing', 'Ladies Clothing', 'Baby Wear', 'Sneakers']
-imageFile!: File
 
 
-
-  constructor(public formBuilder:FormBuilder, private productService:ProductsService) { }
+  constructor(public formBuilder:FormBuilder,
+     private productService:ProductsService,
+     private http:HttpClient) { }
     get pf(){
       return this.productForm.controls;
       
@@ -36,12 +36,23 @@ imageFile!: File
   }
 
   onImageChange(event:any){
-    this.imageFile = event.target.files[0];
+    const files = event.target.files;
+    if(files){
+      const formData= new FormData();
+      formData.append('image', files[0]);
+      this.http.post<{url: string}>('https://api.cloudinary.com/v1_1/dvoijod1b/image/upload', formData).subscribe(
+        (data)=>{
+          console.log(data.url)
+        },
+        error =>{
+          console.log({error});
+        }
+      )
+    }
   }
 
   addProduct(){
     this.productService.addProduct(this.productForm.value).subscribe(()=>{
-      console.log('this is successfuly connected')
     },(err)=>{
       console.log(err);   
     }) 

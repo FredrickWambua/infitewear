@@ -8,11 +8,12 @@ import { CartComponent } from './components/cart/cart.component';
 import { HomeComponent } from './components/home/home.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { ProductsComponent } from './components/products/products.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home',pathMatch:'full'},
   {path: 'home', component: HomeComponent},
-  {path: 'products', loadChildren: ()=>import('./modules/products/products.module')
+  {path: 'products', canActivate: [AuthGuard], loadChildren: ()=>import('./modules/products/products.module')
 .then(mod=>mod.ProductsModule)},
   {path: 'admin', loadChildren: ()=>import('./modules/admin/admin.module')
 .then(mod=>mod.AdminModule)},

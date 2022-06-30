@@ -1,9 +1,13 @@
+.shop-container {
+    display: flex;
+    justify-content: space-between;
+}
 .card-top{
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 30px;
+    /* height: 30px; */
     word-wrap: break-word;
     background-color: white;
     border-bottom: 1px solid blue;
@@ -26,13 +30,14 @@ a{
 }
 .card {
     padding: 20px;
+    max-width: max-content;
 }
 
 h4 , #description{
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 100ch;
+    /* max-width: 50ch; */
 }
 
 .card img{
@@ -40,9 +45,10 @@ h4 , #description{
     height: 200px;
     margin-bottom: 15px;
     transition: 0.3s ease-in-out;
-}
+    object-fit: contain;
 
-.shop-products {
-    display: flex;
-    gap: 2%;
+}
+.card img:hover {
+    transition: 0.3s ease-in-out;
+    transform: scale(1.1);
 }

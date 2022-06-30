@@ -3,14 +3,13 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { Router } from '@angular/router';
 import { User } from '../models/user.model';
 import { catchError, Observable, throwError, map } from 'rxjs';
-import { ThisReceiver } from '@angular/compiler';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-   AUTH_API: string = 'http://localhost:8080/api/users';
+   AUTH_API: string = 'http://127.0.0.1:5500/api/users';
    httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
    currentUser = {};
 
@@ -18,7 +17,7 @@ export class AuthService {
   constructor(private http:HttpClient, private router:Router ) { }
 
   registerUser(user:User): Observable<any>{
-    let API_URL = `${this.AUTH_API}/add`;
+    let API_URL = `${this.AUTH_API}/register`;
     return this.http.post(API_URL, user)
     .pipe(catchError(this.handleError));
 
@@ -26,11 +25,23 @@ export class AuthService {
 
   loginUser(user:User){
     return this.http.post(`${this.AUTH_API}/login`, user)
-    .subscribe((data:any)=>{
-      localStorage.setItem('access_token', data.token);
-      this.getUser(data.id).subscribe((data)=>{
-        this.currentUser = data;
-      })
+    .subscribe((res:any)=>{
+
+      if(res.token){
+        localStorage.setItem('access_token', res.token);
+        console.log(res);
+        this.getUser(res.email).subscribe((data)=>{
+          this.currentUser = data;
+        })
+        this.router.navigate(['/products'])
+        
+      }
+      if(!res.token){
+        console.log('invalid login credentials');
+                
+        this.router.navigate(['/login'])
+      }
+  
     })
   }
 
@@ -43,12 +54,12 @@ export class AuthService {
     return authToken !==null ? true : false
   }
 
-  logoutUser(user:User){
+  logoutUser(){
     localStorage.clear()
   }
 
   getUser(id:any):Observable<any>{
-    let API_URL = `${this.AUTH_API}/getUser/${id}`;
+    let API_URL = `${this.AUTH_API}/${id}`;
     return this.http.get(API_URL, {headers:this.httpHeaders}).pipe(
       map((data)=>{
         return data || {}
@@ -60,7 +71,7 @@ export class AuthService {
   handleError(error:HttpErrorResponse){
     let errorMessage = '';
     if(error.error instanceof ErrorEvent){
-      errorMessage = error.error.message
+      errorMessage = `Error: ${error.message}`;
     } else {
       errorMessage = `Error Code: ${error.status} Message: ${error.message}`;
     }

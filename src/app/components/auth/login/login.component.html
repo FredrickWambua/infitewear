@@ -18,6 +18,12 @@
                 <small *ngIf="loginForm.get('password')!.errors!['minength']">* enter a valid password</small>
             </div>
         </div><br>
+        <div *ngIf="errorMessage" class="alert alert-warning">
+            <strong>Warning!</strong> {{errorMessage | json}}
+          </div>
         <button type="submit" [disabled]="!loginForm.valid" class="btn btn-primary" >Login</button>
+        <div class="alternate">
+            <p>Do not have an account? <a style="color: blue;" routerLink="/signup">Sign Up</a></p>
+        </div>
     </form>  
 </div>
